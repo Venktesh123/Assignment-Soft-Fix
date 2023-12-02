@@ -6,10 +6,11 @@ const  port=process.env.PORT
 import cors from 'cors'
 import connectDB from './config/connectdb.js';
 app.use(cors());
-
+import userRoutes from './routes/userRoutes.js'
 const dataBaseUrl=process.env.DATABASE_URL;
 connectDB(dataBaseUrl)
 app.use(express.json());
+app.use('/api/user',userRoutes)
 app.listen(port,function(err)
 {
     if(err)
